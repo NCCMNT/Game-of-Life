@@ -27,9 +27,9 @@
             <Insets bottom="10.0" left="10.0" top="-20.0" />
          </BorderPane.margin>
          <children>
-            <Button fx:id="startButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Start" />
-            <Button fx:id="stopButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Stop" />
-            <Button fx:id="resetButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Reset" />
+            <Button fx:id="startButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Start" onAction="#onStartButtonClicked"/>
+            <Button fx:id="stopButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Stop" onAction="#onStopButtonClicked"/>
+            <Button fx:id="resetButton" mnemonicParsing="false" prefHeight="35.0" prefWidth="70.0" text="Reset" onAction="#onResetButtonClicked"/>
          </children>
       </HBox>
    </bottom>
