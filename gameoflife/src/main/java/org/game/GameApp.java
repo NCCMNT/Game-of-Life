@@ -5,26 +5,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import org.game.controller.SimulationController;
+import org.game.controller.StartingController;
 
 public class GameApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("grid.fxml"));
+        loader.setLocation(getClass().getClassLoader().getResource("startingPage.fxml"));
         BorderPane root = loader.load();
-        SimulationController controller = loader.getController();
 
-        Scene scene = configureStage(stage, root);
-        controller.setScene(scene);
+        Scene scene = configureStage(stage, root, "startingPage.css");
         stage.show();
+
+        StartingController startingController = loader.getController();
+        startingController.setStage(stage);
+
+        startingController.setScene(scene);
     }
 
-    private Scene configureStage(Stage stage, BorderPane root) {
+    public Scene configureStage(Stage stage, BorderPane root, String cssFile) {
         Scene scene = new Scene(root);
 
-        String cssPath = getClass().getClassLoader().getResource("darkmode.css").toExternalForm();
+        String cssPath = getClass().getClassLoader().getResource(cssFile).toExternalForm();
         scene.getStylesheets().add(cssPath);
 
         stage.setScene(scene);

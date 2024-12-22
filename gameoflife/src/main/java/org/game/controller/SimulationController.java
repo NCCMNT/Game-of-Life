@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import org.game.model.GridMap;
 import org.game.model.Position;
 import org.game.simulation.Simulation;
@@ -15,7 +16,7 @@ import org.game.utils.MapObserver;
 import java.util.HashMap;
 import java.util.List;
 
-public class SimulationController implements MapObserver{
+public class SimulationController implements MapObserver, Controller{
 
     @FXML
     public Button startButton;
@@ -31,6 +32,7 @@ public class SimulationController implements MapObserver{
     private GridPane gridPane;
 
     private Scene scene;
+    private Stage stage;
     private int rows = 50;
     private int cols = 50;
     private int cellSize = 20;
@@ -47,6 +49,22 @@ public class SimulationController implements MapObserver{
     public void setScene(Scene scene) {
         this.scene = scene;
         System.out.println("Scene set: " + (scene != null));
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public void setCols(int cols) {
+        this.cols = cols;
+    }
+
+    public void setCellSize(int cellSize) {
+        this.cellSize = cellSize;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     public void initialize() {
@@ -104,16 +122,16 @@ public class SimulationController implements MapObserver{
         scene.getStylesheets().clear();
         if (!darkMode) {
             themeButton.setText("Light theme");
-            String cssPath = getClass().getResource("/darkmode.css").toExternalForm();
+            String cssPath = getClass().getClassLoader().getResource("darkmode.css").toExternalForm();
             scene.getStylesheets().add(cssPath);
         }
         else {
             themeButton.setText("Dark theme");
-            String cssPath = getClass().getResource("/lightmode.css").toExternalForm();
+            String cssPath = getClass().getClassLoader().getResource("lightmode.css").toExternalForm();
             scene.getStylesheets().add(cssPath);
         }
         darkMode = !darkMode;
-        System.out.println(darkMode);
+        System.out.println("Theme changed to " + (darkMode ? "dark" : "light"));
     }
 
     public void onStartButtonClicked() {
