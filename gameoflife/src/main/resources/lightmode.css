@@ -1,0 +1,65 @@
+.root {
+    -fx-background-color: #cfcfcf;
+}
+
+.cell {
+    -fx-fill: #bcbcbc;
+    -fx-stroke: #b1b1b1;
+    -fx-stroke-width: 0.2;
+}
+
+.cell.alive {
+    -fx-fill: #505050;
+    -fx-stroke: #616161;
+    -fx-stroke-width: 0.8;
+}
+
+.cell.dead {
+    -fx-fill: #bcbcbc;
+}
+
+.button {
+    -fx-font-family: 'Press Start 2P', monospace;
+    -fx-text-fill: #353535;
+    -fx-font-size: 12;
+    -fx-min-width: 200;
+    -fx-min-height: 40;
+
+    -fx-background-color: #e6e6e6;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+
+    -fx-alignment: center;
+}
+
+.button:hover {
+    -fx-background-color: #d3d3d3;
+    -fx-border-color: #ff5858;
+}
+
+.button:pressed {
+    -fx-background-color: #939393;
+    -fx-border-color: #ff9100;
+}
+
+.slider {
+    -fx-base: #858585;
+    -fx-background-color: #e6e6e6;
+    -fx-min-width: 100;
+}
+
+/* Style for the Slider Thumb (the draggable handle) */
+.slider .thumb {
+    -fx-background-color: #ff5858; /* Tomato color */
+    -fx-background-radius: 50%; /* Circular shape */
+    -fx-border-radius: 50%; /* Rounded border */
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+
+/* Style for the Track (the background line the thumb moves along) */
+.slider .track {
+    -fx-background-color: #aaaaaa; /* Darker color for the track */
+    -fx-background-insets: 0, 5;
+    -fx-background-radius: 3;
+}

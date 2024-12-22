@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+/*@font-face {*/
+/*    -fx-font-family: 'Press Start 2P';*/
+/*}*/
+
+.root {
+    -fx-background-color: #424242;
+}
+
+#backgroundVBox {
+    -fx-background-color: #424242;
+}
+
+.cell {
+    -fx-fill: #575757;
+    -fx-stroke: #424242;
+    -fx-stroke-width: 0.2;
+}
+
+.cell.alive {
+    -fx-fill: #e8e8e8;
+    -fx-stroke: #c8c8c8;
+    -fx-stroke-width: 0.8;
+}
+
+.cell.dead {
+    -fx-fill: #575757;
+}
+
+.button {
+    -fx-font-family: 'Press Start 2P', monospace;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12;
+    -fx-min-width: 200;
+    -fx-min-height: 40;
+
+    -fx-background-color: #353535;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+
+    -fx-alignment: center;
+}
+
+.button:hover {
+    -fx-background-color: #282828;
+    -fx-border-color: #5892ff;
+}
+
+.button:pressed {
+    -fx-background-color: #000000;
+    -fx-border-color: #ff9100;
+}
+
+.slider {
+    -fx-base: #858585;
+    -fx-background-color: #353535;
+    -fx-min-width: 100;
+}
+
+/* Style for the Slider Thumb (the draggable handle) */
+.slider .thumb {
+    -fx-background-color: #5892ff; /* Tomato color */
+    -fx-background-radius: 50%; /* Circular shape */
+    -fx-border-radius: 50%; /* Rounded border */
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+}
+
+/* Style for the Track (the background line the thumb moves along) */
+.slider .track {
+    -fx-background-color: #aaaaaa; /* Darker color for the track */
+    -fx-background-insets: 0, 5;
+    -fx-background-radius: 3;
+}

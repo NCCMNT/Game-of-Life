@@ -16,20 +16,22 @@ public class GameApp extends Application {
         BorderPane root = loader.load();
         SimulationController controller = loader.getController();
 
-        configureStage(stage, root);
+        Scene scene = configureStage(stage, root);
+        controller.setScene(scene);
         stage.show();
     }
 
-    private void configureStage(Stage stage, BorderPane root) {
-        var scene = new Scene(root);
+    private Scene configureStage(Stage stage, BorderPane root) {
+        Scene scene = new Scene(root);
 
-        String cssPath = getClass().getClassLoader().getResource("grid.css").toExternalForm();
+        String cssPath = getClass().getClassLoader().getResource("darkmode.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
 
         stage.setScene(scene);
         stage.setTitle("Game of Life");
-
         root.setMinHeight(800);
         root.setMinWidth(800);
+
+        return scene;
     }
 }
