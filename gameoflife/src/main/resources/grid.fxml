@@ -6,7 +6,7 @@
 
 <BorderPane fx:id="borderPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.game.controller.SimulationController">
    <center>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="383.0" prefWidth="580.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefHeight="383.0" prefWidth="580.0" vbarPolicy="NEVER" BorderPane.alignment="CENTER" xmlns:fx="http://javafx.com/fxml">
          <BorderPane.margin>
             <Insets bottom="-34.0" left="4.0" right="4.0" top="4.0" />
          </BorderPane.margin>
