@@ -31,4 +31,5 @@ public class Simulation implements Runnable{
     public void stop(){
         running = false;
     }
+    public void resume() { running = true; }
 }

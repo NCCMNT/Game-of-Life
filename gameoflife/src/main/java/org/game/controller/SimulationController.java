@@ -41,6 +41,7 @@ public class SimulationController implements MapObserver, Controller{
     private HashMap<Position, Rectangle> cellRectangles;
     private Simulation simulation;
     private boolean darkMode = true;
+    private boolean resumable = false;
 
     public void setSimulation(Simulation simulation) {
         this.simulation = simulation;
@@ -135,25 +136,41 @@ public class SimulationController implements MapObserver, Controller{
     }
 
     public void onStartButtonClicked() {
-        System.out.println("Simulation started");
-        GridMap grid = new GridMap(this.rows, this.cols, this.cellStates);
-        grid.addObserver(this);
+        if (resumable) {
+            simulation.resume();
 
-        Simulation simulation = new Simulation(grid, (int) speedSlider.getValue());
-        this.setSimulation(simulation);
+            startButton.setDisable(true);
+            stopButton.setDisable(false);
+            
 
-        startButton.setDisable(true);
-        stopButton.setDisable(false);
+            Thread simulationThread = new Thread(simulation);
+            simulationThread.setDaemon(true); // Ensure it stops when the app exits
+            simulationThread.start();
+        }
+        else {
+            System.out.println("Simulation started");
+            GridMap grid = new GridMap(this.rows, this.cols, this.cellStates);
+            grid.addObserver(this);
 
-        Thread simulationThread = new Thread(simulation);
-        simulationThread.setDaemon(true); // Ensure it stops when the app exits
-        simulationThread.start();
+            Simulation simulation = new Simulation(grid, (int) speedSlider.getValue());
+            this.setSimulation(simulation);
+
+            startButton.setDisable(true);
+            stopButton.setDisable(false);
+            resumable = true;
+
+            Thread simulationThread = new Thread(simulation);
+            simulationThread.setDaemon(true); // Ensure it stops when the app exits
+            simulationThread.start();
+        }
     }
 
     public void onStopButtonClicked() {
         System.out.println("Simulation stopped");
         this.simulation.stop();
+        stopButton.setDisable(true);
         resetButton.setDisable(false);
+        startButton.setDisable(false);
     }
 
     public void onResetButtonClicked() {
@@ -162,6 +179,9 @@ public class SimulationController implements MapObserver, Controller{
         gridPane.getChildren().clear();
         initialize();
         startButton.setDisable(false);
+        stopButton.setDisable(true);
+        resetButton.setDisable(true);
+        resumable = false;
     }
 
     @Override
