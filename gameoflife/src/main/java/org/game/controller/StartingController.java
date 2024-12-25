@@ -42,6 +42,13 @@ public class StartingController implements Controller {
         System.out.println("New app opened");
     }
 
+    private int getValidatedValue(String text, int defaultValue) {
+        if (text == null || !text.matches("[1-9]\\d*")) {
+            return defaultValue;
+        }
+        return Integer.parseInt(text);
+    }
+
     public void setupGrid(ActionEvent actionEvent) {
         try {
 
@@ -49,27 +56,13 @@ public class StartingController implements Controller {
             root = loader.load();
             SimulationController simulationController = loader.getController();
 
-            widthField.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!newValue.matches("[1-9]\\d*")) {
-                    widthField.setText("50");
-                }
-            });
+            int cols = getValidatedValue(widthField.getText(), 50);
+            int rows = getValidatedValue(heightField.getText(), 50);
+            int cellSize = getValidatedValue(cellSizeField.getText(), 20);
 
-            heightField.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!newValue.matches("[1-9]\\d*")) {
-                    heightField.setText("50");
-                }
-            });
-
-            cellSizeField.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (!newValue.matches("[1-9]\\d*")) {
-                    cellSizeField.setText("20");
-                }
-            });
-
-            simulationController.setCols(Integer.parseInt(widthField.getText()));
-            simulationController.setRows(Integer.parseInt(heightField.getText()));
-            simulationController.setCellSize(Integer.parseInt(cellSizeField.getText()));
+            simulationController.setCols(cols);
+            simulationController.setRows(rows);
+            simulationController.setCellSize(cellSize);
             simulationController.initialize();
 
             stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

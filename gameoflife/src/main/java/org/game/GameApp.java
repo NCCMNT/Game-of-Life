@@ -32,8 +32,8 @@ public class GameApp extends Application {
 
         stage.setScene(scene);
         stage.setTitle("Game of Life");
-        root.setMinHeight(800);
-        root.setMinWidth(800);
+        stage.setMinHeight(800);
+        stage.setMinWidth(800);
 
         return scene;
     }

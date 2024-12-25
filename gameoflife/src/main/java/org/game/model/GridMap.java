@@ -15,6 +15,7 @@ public class GridMap {
     private final List<Position> neighbours = new Neighbours().getNeighbours();
     private List<Position> cellsToBeChanged;
     private List<MapObserver> observers = new ArrayList<>();
+    private int generation = 0;
 
     public GridMap(int rows, int columns, HashMap<Position, Boolean> cellsStates) {
         this.rows = rows;
@@ -35,6 +36,7 @@ public class GridMap {
                 cellsToBeChanged.add(position);
             }
         }
+        generation++;
         this.notifyObservers(cellsToBeChanged);
     }
 
@@ -56,6 +58,7 @@ public class GridMap {
     public void notifyObservers(List<Position> positions) {
         for (MapObserver observer : observers) {
             observer.cellsToBeChanged(this, positions);
+            observer.generationCountChanged(generation);
         }
     }
 }

@@ -10,4 +10,10 @@ public interface MapObserver {
      *
      */
     void cellsToBeChanged( GridMap gridMap , List<Position> positions);
+
+    /**
+     *
+     *
+     */
+    void generationCountChanged(int generationCount);
 }

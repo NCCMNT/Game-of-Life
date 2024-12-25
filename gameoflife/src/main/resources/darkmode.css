@@ -4,6 +4,16 @@
     -fx-background-color: #424242;
 }
 
+#speedLabel {
+    -fx-font-family: 'Press Start 2P', monospace;
+    -fx-text-fill: #ffffff;
+}
+
+#generationLabel {
+    -fx-font-family: 'Press Start 2P', monospace;
+    -fx-text-fill: #ffffff;
+}
+
 #backgroundVBox {
     -fx-background-color: #424242;
 }
@@ -50,7 +60,7 @@
 
 .slider {
     -fx-base: #858585;
-    -fx-background-color: #353535;
+    /*-fx-background-color: #353535;*/
     -fx-min-width: 100;
 }
 
