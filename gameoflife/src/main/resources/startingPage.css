@@ -44,3 +44,8 @@
     -fx-background-color: #000000;
     -fx-border-color: #ff9100;
 }
+
+.checkbox {
+    -fx-font-family: 'Press Start 2P', monospace;
+    -fx-text-fill: #ffffff;
+}

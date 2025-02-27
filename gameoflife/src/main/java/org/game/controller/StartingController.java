@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -25,6 +26,8 @@ public class StartingController implements Controller {
     public TextField heightField;
     @FXML
     public TextField cellSizeField;
+    @FXML
+    public CheckBox randomSetup;
 
     private Scene scene;
     private Stage stage;
@@ -59,10 +62,12 @@ public class StartingController implements Controller {
             int cols = getValidatedValue(widthField.getText(), 50);
             int rows = getValidatedValue(heightField.getText(), 50);
             int cellSize = getValidatedValue(cellSizeField.getText(), 20);
+            boolean setup = randomSetup.isSelected();
 
             simulationController.setCols(cols);
             simulationController.setRows(rows);
             simulationController.setCellSize(cellSize);
+            simulationController.setSetup(setup);
             simulationController.initialize();
 
             stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

@@ -19,6 +19,7 @@ import org.game.utils.MapObserver;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class SimulationController implements MapObserver, Controller{
 
@@ -52,8 +53,10 @@ public class SimulationController implements MapObserver, Controller{
     private Simulation simulation;
     private boolean darkMode = true;
     private boolean resumable = false;
+    private boolean setup = false;
 
     private Scale scaleTransform = new Scale(1,1);
+    private Random random = new Random();
 
     public void setSimulation(Simulation simulation) {
         this.simulation = simulation;
@@ -75,6 +78,8 @@ public class SimulationController implements MapObserver, Controller{
     public void setCellSize(int cellSize) {
         this.cellSize = cellSize;
     }
+
+    public void setSetup(boolean setup) { this.setup = setup; }
 
     public void setStage(Stage stage) {
         this.stage = stage;
@@ -109,6 +114,7 @@ public class SimulationController implements MapObserver, Controller{
 
     private void generateGrid() {
         gridPane.getChildren().clear();
+        random = new Random();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
 
@@ -118,6 +124,7 @@ public class SimulationController implements MapObserver, Controller{
                 cellRectangles.put(position, cell);
 
                 cell.getStyleClass().add("cell");
+                if (setup && random.nextInt(100) <= 40) toggleCellState(position);
                 cell.setOnMouseClicked(mouseEvent -> {
                     if (!startButton.isDisable()) toggleCellState(position);
                 });

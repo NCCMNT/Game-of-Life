@@ -28,6 +28,7 @@
                         <Label alignment="CENTER" contentDisplay="CENTER" minWidth="400.0" text="Set the size of the cells" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
+                  <CheckBox fx:id="randomSetup" mnemonicParsing="false" text="Random setup" styleClass="checkbox" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="setupButton" mnemonicParsing="false" onAction="#setupGrid" text="Set" />
