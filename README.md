@@ -3,8 +3,8 @@
 
 This project is a Java implementation of this simple game/simulation.
 
-![Alt Text](https://github.com/NCCMNT/Game-of-Life/blob/desc/description_files/showcase_1.gif)
-![Alt Text](https://github.com/NCCMNT/Game-of-Life/blob/desc/description_files/showcase_2.gif)
+![Alt Text](https://github.com/NCCMNT/Game-of-Life/blob/main/description_files/showcase_1.gif)
+![Alt Text](https://github.com/NCCMNT/Game-of-Life/blob/main/description_files/showcase_2.gif)
 
 
 UI features:
